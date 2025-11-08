@@ -48,6 +48,8 @@ Other compilers can be specified by appending `-DCMAKE_C_COMPILER=/path/to/compi
 
 ### For compiling on older versions of Ubuntu / Linux:
 
+Compile the source from an old operating system instance.  The below instructions worked on Ubuntu 14.04 x64:
+
 Manually compile the source for cmake 3.28.3 and install it:
 
 ```sh
@@ -84,6 +86,12 @@ mkdir .cmake && cd .cmake
 cmake -DCMAKE_CXX_COMPILER=/usr/bin/g++-9 ../
 cmake --build .
 cmake --install .
+```
+
+It should then work on Ubuntu 14.04 x64 with its default `libstdc++6` libary.
+
+```sh
+sudo apt-get install libstdc++6
 ```
 
 ## Compiling for Windows
