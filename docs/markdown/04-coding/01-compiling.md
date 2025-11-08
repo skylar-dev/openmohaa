@@ -50,7 +50,7 @@ Other compilers can be specified by appending `-DCMAKE_C_COMPILER=/path/to/compi
 
 Manually compile the source for cmake 3.28.3 and install it:
 
-```
+```sh
 wget -N "https://cmake.org/files/v3.28/cmake-3.28.3.tar.gz"
 tar -xzf cmake-3.28.3.tar.gz
 cd cmake-3.28.3
@@ -61,14 +61,15 @@ sudo make install
 
 Install gcc-9 and g++9
 
-```sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+```sh
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test
 sudo apt-get update && sudo apt-get upgrade
 sudo apt-get install gcc-9 g++-9
 ```
 
 Update your alternatives and set it to use gcc9:
 
-```
+```sh
 sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 60
 sudo update-alternatives --config gcc
 ```
