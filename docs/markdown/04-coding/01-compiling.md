@@ -46,6 +46,45 @@ Usually binaries get installed inside the `/usr/local/lib/openmohaa` directory.
 
 Other compilers can be specified by appending `-DCMAKE_C_COMPILER=/path/to/compiler -DCMAKE_CXX_COMPILER=path/to/compiler` to the CMake command-line.
 
+### For compiling on older versions of Ubuntu / Linux:
+
+Manually compile the source for cmake 3.28.3 and install it:
+
+```
+wget -N "https://cmake.org/files/v3.28/cmake-3.28.3.tar.gz"
+tar -xzf cmake-3.28.3.tar.gz
+cd cmake-3.28.3
+./bootstrap
+make
+sudo make install
+```
+
+Install gcc-9 and g++9
+
+```sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+sudo apt-get update && sudo apt-get upgrade
+sudo apt-get install gcc-9 g++-9
+```
+
+Update your alternatives and set it to use gcc9:
+
+```
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 60
+sudo update-alternatives --config gcc
+```
+
+The libstc++6 is statically linked.
+
+
+Compile it like so:
+
+```sh
+mkdir .cmake && cd .cmake
+cmake -DCMAKE_CXX_COMPILER=/usr/bin/g++-9 ../
+cmake --build .
+cmake --install .
+```
+
 ## Compiling for Windows
 
 Visual Studio (2019 or 2022) is generally preferred.
