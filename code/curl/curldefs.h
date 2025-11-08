@@ -39,7 +39,7 @@ typedef struct {
     void (*qcurl_free)(void *p);
     struct curl_slist *(*qcurl_slist_append)(struct curl_slist *list, const char *data);
     void (*qcurl_slist_free_all)(struct curl_slist *list);
-    struct curl_version_info_data *(*qcurl_version_info)(CURLversion);
+    curl_version_info_data *(*qcurl_version_info)(CURLversion);
     const char *(*qcurl_easy_strerror)(CURLcode);
     const char *(*qcurl_share_strerror)(CURLSHcode);
     CURLcode (*qcurl_easy_pause)(CURL *handle, int bitmask);

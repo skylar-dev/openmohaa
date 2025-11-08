@@ -354,7 +354,7 @@ size_t WriteCallback(char *contents, size_t size, size_t nmemb, void *userp)
 
     size_t responseSize = size * nmemb;
     if (callbackData->GetSize() + responseSize + 1 > MAX_BUFFER_SIZE) {
-        return CURL_WRITEFUNC_ERROR;
+        return 0;
     }
 
     callbackData->buffer.append(contents, responseSize);
