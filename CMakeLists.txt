@@ -9,13 +9,17 @@ endif()
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 include(identity)
 
+add_link_options("-static-libstdc++" "-static-libgcc")
+
 project(${PROJECT_NAME} VERSION ${PROJECT_VERSION} LANGUAGES C CXX)
+
+set(SERVER_LINK_OPTIONS "-static-libstdc++")
 
 option(BUILD_SERVER "Build dedicated server" ON)
 option(BUILD_CLIENT "Build client" OFF)
 option(BUILD_RENDERER_GL1 "Build GL1 renderer" OFF)
 option(BUILD_RENDERER_GL2 "Build GL2 renderer" OFF)
-option(BUILD_GAME_LIBRARIES "Build game module libraries" OFF)
+option(BUILD_GAME_LIBRARIES "Build game module libraries" ON)
 option(BUILD_GAME_QVMS "Build game module qvms" OFF)
 option(BUILD_STANDALONE "Build binaries for standalone games" OFF)
 
@@ -44,13 +48,12 @@ if(NOT CMAKE_CONFIGURATION_TYPES AND NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Release)
 endif()
 
-#set(CMAKE_C_STANDARD 17)
-#set(CMAKE_C_STANDARD_REQUIRED ON)
-#set(CMAKE_CXX_STANDARD 17)
-#set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_C_STANDARD 17)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(CMAKE_CXX_LINK_FLAGS "${CMAKE_CXX_LINK_FLAGS} -static-libstdc++")
-
 set(CMAKE_SHARED_LIBRARY_PREFIX "")
 
 set(SOURCE_DIR ${CMAKE_SOURCE_DIR}/code)
