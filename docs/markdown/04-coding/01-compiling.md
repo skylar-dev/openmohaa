@@ -61,6 +61,18 @@ make
 sudo make install
 ```
 
+Manually compile the source for bison 3.8.2 and install it (required or the bison code doesn't work):
+
+```sh
+wget -N "https://ftp.gnu.org/gnu/bison/bison-3.8.2.tar.xz"
+tar -xfv bison-3.8.2.tar.xz
+cd bison-3.8.2
+./configure
+make
+sudo make install
+bison -V
+```
+
 Install gcc-9 and g++9
 
 ```sh
